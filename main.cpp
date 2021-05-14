@@ -25,5 +25,25 @@ template <class T>
 class dynamyc_array{
     T*array;
     int MIN_Capacity = INITIAL_CAPACITY;
+    int GROWTH_FACTOR = 2;
+    int size;
+
+
+public:
+    dynamyc_array(){
+        array = new T[MIN_Capacity];
+        size = 0;
+    }
+    void show(){
+        for(int i=0; i<size; i++){
+            cout << array[i] << " ";
+        }
+    }
+    void append(T element) {
+        if(size == MIN_Capacity){
+            resize();
+        }
+    }
+
 
 };
