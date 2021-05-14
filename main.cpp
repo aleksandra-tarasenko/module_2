@@ -73,7 +73,9 @@ public:
         }
     }
 
-
+    int length(){
+        return size;
+    }
 
     void resize(){
         MIN_Capacity = MIN_Capacity + ceil(MIN_Capacity/2);
@@ -84,5 +86,12 @@ public:
 
 
     }
-
+    void copy(T temp[]){
+        for(int i = 0; i < size; i++){
+            temp[i] = array[i];
+        }
+    }
+    T get(int pos){
+        return array[pos];
+    }
 };
