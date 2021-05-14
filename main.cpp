@@ -17,7 +17,7 @@
 
 
 #include <iostream>
-
+#include <math.h>
 using namespace std;
 #define INITIAL_CAPACITY 5
 
@@ -44,6 +44,34 @@ public:
             resize();
         }
     }
+    void deleteAt(int pos){
+        if ((pos > size) || (pos <0)){
+            cout << "Invalid index";
+            return;
+        }
+        for(int i = pos; i <= size; i++){
+            array[i] = array[i+1];
+        }
+        size --;
+    }
+    void insertAt(int element, int pos){
+        if((pos > size) || (pos <0)){
+            cout << "Invalid index";
+            return;
+        }
+        if (size == MIN_Capacity){
+            resize();
+        }
+        size ++;
+    }
+    void resize(){
+        MIN_Capacity = MIN_Capacity + ceil(MIN_Capacity/2);
+        T *temp = new T[MIN_Capacity];
+        copy(temp);
+        delete [] array;
+        array = temp;
 
+
+    }
 
 };
