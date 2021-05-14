@@ -43,6 +43,8 @@ public:
         if(size == MIN_Capacity){
             resize();
         }
+        array[size] = element;
+        size++;
     }
     void deleteAt(int pos){
         if ((pos > size) || (pos <0)){
@@ -78,11 +80,18 @@ public:
     }
 
     void resize(){
-        MIN_Capacity = MIN_Capacity + ceil(MIN_Capacity/2);
+        MIN_Capacity *= GROWTH_FACTOR;
         T *temp = new T[MIN_Capacity];
         copy(temp);
         delete [] array;
         array = temp;
+
+
+//        MIN_Capacity = MIN_Capacity + ceil(MIN_Capacity/2);
+//        T *temp = new T[MIN_Capacity];
+//        copy(temp);
+//        delete [] array;
+//        array = temp;
 
 
     }
@@ -95,3 +104,19 @@ public:
         return array[pos];
     }
 };
+
+int main(){
+    dynamyc_array<int> dynArr;
+    dynArr.append(3);
+    dynArr.append(4);
+    dynArr.append(5);
+    dynArr.append(4);
+    dynArr.append(33);
+    dynArr.append(3);
+
+    dynArr.show();
+
+    dynArr.deleteAt(6);
+
+    return 0;
+}
