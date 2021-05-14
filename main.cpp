@@ -63,7 +63,18 @@ public:
             resize();
         }
         size ++;
+
+        for(int i = size -1; i >=pos; i--){
+            if(i == pos){
+                array[i] = element;
+            } else {
+                array[i] = array [i-1];
+            }
+        }
     }
+
+
+
     void resize(){
         MIN_Capacity = MIN_Capacity + ceil(MIN_Capacity/2);
         T *temp = new T[MIN_Capacity];
